@@ -1,2 +1,2 @@
-# stpm3x
-RIOT OS driver for STPM3x
+# stpm33
+RIOT OS driver for STPM33
