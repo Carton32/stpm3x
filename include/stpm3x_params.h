@@ -4,6 +4,7 @@
 #include "board.h"
 #include "stpm3x.h"
 #include "saul_reg.h"
+#include "stpm3x_registers.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -34,7 +35,15 @@ extern "C" {
 #ifndef STPM3X_PARAM_NRST
 #define STPM3X_PARAM_NRST                             (GPIO_PIN(0, 4))
 #endif
-
+#ifndef STPM3X_PARAM_CURRENTLSB
+#define STPM3X_PARAM_CURRENTLSB                       (0.848)
+#endif
+#ifndef STPM3X_PARAM_VOLTAGELSB
+#define STPM3X_PARAM_VOLTAGELSB                       (1)
+#endif
+#ifndef STPM3X_PARAM_GAIN
+#define STPM3X_PARAM_GAIN                             (2)
+#endif
 /**@}*/
 
 /**
@@ -47,8 +56,11 @@ extern "C" {
                                                         .scs    = STPM3X_PARAM_SCS,         \
                                                         .syn    = STPM3X_PARAM_SYN,         \
                                                         .int1   = STPM3X_PARAM_INT1,        \
-                                                        .int2   = STPM3X_PARAM_INT2,         \
+                                                        .int2   = STPM3X_PARAM_INT2,        \
                                                         .nrst   = STPM3X_PARAM_NRST         \
+                                                        .currentRMSLSBValue = STPM3X_PARAM_CURRENTLSB \
+                                                        .voltageRMSLSBValue = STPM3X_PARAM_VOLTAGELSB \
+                                                        .gain = STPM3X_PARAM_GAIN \
                                                       }
 #endif
 /**@}*/
@@ -67,7 +79,7 @@ static const stpm3x_params_t stpm3x_params[] =
 
 static const saul_reg_info_t stpm3x_saul_info[] =
 {
-    { .name = "stpm33" }
+    { .name = "stpm3x" }
 };
 
 #ifdef __cplusplus
