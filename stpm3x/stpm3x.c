@@ -140,7 +140,6 @@ uint8_t stpm3x_init(stpm3x_t *dev, const stpm3x_params_t *params)
 
     if (test_value != row2)
     {
-        gpio_toggle(RELAY_CTRL_PIN);
         DEBUG("%s : bad initialization of STPM3x device driver!\n", DEBUG_FUNC);
         return STPM3X_ERROR;
     }
