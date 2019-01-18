@@ -1,5 +1,23 @@
-#ifndef STPM3X_REGISTERS_H
-#define STPM3X_REGISTERS_H
+/*
+ * Copyright (C) 2019 eeproperty Ltd.
+ *
+ * This file is subject to the terms and conditions of the GNU Lesser
+ * General Public License v2.1. See the file LICENSE in the top level
+ * directory for more details.
+ */
+
+/**
+ * @ingroup     drivers_stpm3x
+ * @brief       Internal addresses, registers, constants for the STPM3X family sensors
+ * @{
+ * @file
+ * @brief       Internal addresses, registers, constants for the STPM3X family sensors
+ *
+ * @author      Joel Carron <jo.carron@cartondu.ch>
+ */
+
+#ifndef STPM3X_INTERNALS_H
+#define STPM3X_INTERNALS_H
 
 #ifdef __cplusplus
 extern "C" {
@@ -414,9 +432,41 @@ extern "C" {
 #define STPM3X_MASK_TOT_APPARENT_ENERGY               (0xFFFFFFFF)
 /** @} */
 
+/**
+  * @brief   Timing definition for STPM3X
+  * 
+  * From Datasheet p.19-20, nanoseconds + 'Getting started with STPM3x' p.6, nanoseconds
+  * 
+  */
+#define STPM3X_T_EN_MIN             (50U)
+#define STPM3X_T_CLK_MIN            (50U)
+#define STPM3X_T_CPW_MIN            (25U)
+#define STPM3X_T_SETUP_MIN          (10U)
+#define STPM3X_T_HOLD_MIN           (40U)
+#define STPM3X_T_LTCH_MIN           (20U)
+#define STPM3X_T_LPW_MIN            (4000U)
+#define STPM3X_T_W_MIN              (4000U)
+#define STPM3X_T_RPW_MIN            (4000U)
+#define STPM3X_T_RPW_TYP            (1000000U)
+#define STPM3X_T_REL_MIN            (40U)
+#define STPM3X_T_STARTUP_MIN        (35000000U)
+#define STPM3X_T_STARTUP_TYP        (35000000U)
+#define STPM3X_T_IF_MIN             (4000U)
+#define STPM3X_T_IF_TYP             (10000000U)
+#define STPM3X_T_SCS_MIN            (4000U)
+#define STPM3X_T_SCS_TYP            (1000000U)
+
+/**
+  * @brief   Constants for CRC generation
+  * 
+  * From 'Getting started with the STPM3x', p.15
+  */
+#define STPM3X_CRC_8                (0x07)
+#define STPM3X_FRAME_LEN            (5)
+
 #ifdef __cplusplus
 }
 #endif
 
-#endif /* CC2420_REGISTERS_H */
+#endif /* STPM3X_INTERNALS_H */
 /** @} */
