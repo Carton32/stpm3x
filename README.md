@@ -24,6 +24,4 @@ ifneq (,$(filter stpm3x,$(USEMODULE)))
 endif
 ```
 
-and move the `auto_init_stpm3x.c` file to `/sys/auto_init/saul/` + the `stpm3x.h` file to `/drivers/include`
-
-All other files have to be in `/drivers/` in a folder named `stpm3x`
+and move the `auto_init_stpm3x.c` file to `/sys/auto_init/saul/` + the `stpm3x.h` file to `/drivers/include` + the folder `stpm3x` to `/drivers/`
