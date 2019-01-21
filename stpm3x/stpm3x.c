@@ -209,7 +209,8 @@ uint8_t stpm3x_write_reg(const stpm3x_t *dev, const uint8_t reg, const uint32_t 
 
     gpio_set(dev->params.scs);
     xtimer_nanosleep(STPM3X_T_SCS_MIN);
-     return STPM3X_OK;
+
+    return STPM3X_OK;
 }
 
 static void _stpm3x_errors_spi_cb(void *arg)
