@@ -1,4 +1,4 @@
-# STPM3x
+# RIOT OS 2020.01 - STPM3x
 RIOT OS driver for STPM3x
 Tested on RIOT 2020.01 with STPM33 only with current values reading on channels 1 & 2.
 
