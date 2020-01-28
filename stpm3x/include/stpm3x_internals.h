@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 eeproperty Ltd.
+ * Copyright (C) 2020 eeproperty Ltd.
  *
  * This file is subject to the terms and conditions of the GNU Lesser
  * General Public License v2.1. See the file LICENSE in the top level
@@ -210,7 +210,7 @@ extern "C" {
 #define STPM3X_MASK_BAUD_RATE                         (0xFFFF)
 #define STPM3X_MASK_FRAME_DELAY                       (0xFF0000)
 
-#define STPM3X_REG_US_IRQ                             (0x28) /* UART & SPI IRQ Register */
+#define STPM3X_REG_US_REG3                            (0x28) /* UART & SPI IRQ Register */
 #define STPM3X_MASK_CR_CRC_ERR1                       (0x2)
 #define STPM3X_MASK_CR_TIMEOUT_ERR                    (0x4)
 #define STPM3X_MASK_CR_FRAME_ERR                      (0x8)
@@ -434,35 +434,46 @@ extern "C" {
 
 /**
   * @brief   Timing definition for STPM3X
-  * 
-  * From Datasheet p.19-20, nanoseconds + 'Getting started with STPM3x' p.6, nanoseconds
-  * 
+  *
+  * From Datasheet p.19-20 of 'Getting started with STPM3x' p.6, in [us] unless specified
+  *
   */
-#define STPM3X_T_EN_MIN             (50U)
-#define STPM3X_T_CLK_MIN            (50U)
-#define STPM3X_T_CPW_MIN            (25U)
-#define STPM3X_T_SETUP_MIN          (10U)
-#define STPM3X_T_HOLD_MIN           (40U)
-#define STPM3X_T_LTCH_MIN           (20U)
-#define STPM3X_T_LPW_MIN            (4000U)
-#define STPM3X_T_W_MIN              (4000U)
-#define STPM3X_T_RPW_MIN            (4000U)
-#define STPM3X_T_RPW_TYP            (1000000U)
-#define STPM3X_T_REL_MIN            (40U)
-#define STPM3X_T_STARTUP_MIN        (35000000U)
-#define STPM3X_T_STARTUP_TYP        (35000000U)
-#define STPM3X_T_IF_MIN             (4000U)
-#define STPM3X_T_IF_TYP             (10000000U)
-#define STPM3X_T_SCS_MIN            (4000U)
-#define STPM3X_T_SCS_TYP            (1000000U)
+#define STPM3X_T_EN_MIN             (50U)     // ns
+#define STPM3X_T_EN_CUST            (1U)
+#define STPM3X_T_CLK_MIN            (50U)     // ns
+#define STPM3X_T_CPW_MIN            (25U)     // ns
+#define STPM3X_T_SETUP_MIN          (10U)     // ns
+#define STPM3X_T_HOLD_MIN           (40U)     // ns
+#define STPM3X_T_LTCH_MIN           (20U)     // ns
+#define STPM3X_T_LPW_MIN            (4U)
+#define STPM3X_T_W_MIN              (4U)
+#define STPM3X_T_RPW_MIN            (4U)
+#define STPM3X_T_RPW_TYP            (1000U)
+#define STPM3X_T_REL_MIN            (40U)     // ns
+#define STPM3X_T_STARTUP_MIN        (35000U)
+#define STPM3X_T_STARTUP_TYP        (35000U)
+#define STPM3X_T_IF_MIN             (4U)
+#define STPM3X_T_IF_TYP             (10000U)
+#define STPM3X_T_SCS_MIN            (4U)
+#define STPM3X_T_SCS_CUST           (50U)
+#define STPM3X_T_SCS_TYP            (1000U)
+#define STPM3X_T_READY_WAIT         (1000000U)
 
 /**
   * @brief   Constants for CRC generation
-  * 
+  *
   * From 'Getting started with the STPM3x', p.15
   */
 #define STPM3X_CRC_8                (0x07)
-#define STPM3X_FRAME_LEN            (5)
+#define STPM3X_FRAME_LEN            (5U)
+
+/**
+  * @brief   Size of data to write in the SPI bus
+  *
+  * From 'Getting started with the STPM3x', p.13
+  */
+#define STPM3X_DATA_SIZE            (10U)
+#define STPM3X_DATA_SIZE_STEP       (STPM3X_DATA_SIZE / 2)
 
 #ifdef __cplusplus
 }

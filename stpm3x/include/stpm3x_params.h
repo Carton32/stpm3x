@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 eeproperty Ltd.
+ * Copyright (C) 2020 eeproperty Ltd.
  *
  * This file is subject to the terms and conditions of the GNU Lesser
  * General Public License v2.1. See the file LICENSE in the top level
@@ -8,7 +8,7 @@
 
 /**
  * @ingroup     drivers_stpm3x
- * 
+ *
  * @{
  * @file
  * @brief       Default configuration for the STPM3x
@@ -41,7 +41,7 @@ extern "C" {
 #define STPM3X_PARAM_SPI                              (SPI_DEV(0))
 #endif
 #ifndef STPM3X_PARAM_SPI_CLK
-#define STPM3X_PARAM_SPI_CLK                          (SPI_CLK_400KHZ)
+#define STPM3X_PARAM_SPI_CLK                          (SPI_CLK_5MHZ)
 #endif
 #ifndef STPM3X_PARAM_SCS
 #define STPM3X_PARAM_SCS                              (GPIO_PIN(0, 0))
@@ -103,7 +103,7 @@ static const stpm3x_params_t stpm3x_params[] =
 
 /**
  * @brief   Allocate and configure entries to the SAUL registry
- * This two dimensional array contains static details of the sensors. 
+ * This two dimensional array contains static details of the sensors.
  * Please be aware that the indexes are used in
  * auto_init_stpm3x, so make sure the indexes match.
  */

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2019 eeproperty Ltd.
+ * Copyright (C) 2020 eeproperty Ltd.
  *
  * This file is subject to the terms and conditions of the GNU Lesser
  * General Public License v2.1. See the file LICENSE in the top level
@@ -24,8 +24,8 @@
 static int read_current_rms_1(const void *dev, phydat_t *res)
 {
     const stpm3x_t *d = (stpm3x_t *) dev;
-    
-    res->val[0] = (uint16_t) stpm3x_read_current_rms_1(d);
+
+    res->val[0] = stpm3x_read_current_rms_1(d);
     res->unit = UNIT_A;
     res->scale = -3;
     return 1;
@@ -35,7 +35,7 @@ static int read_voltage_rms_1(const void *dev, phydat_t *res)
 {
     const stpm3x_t *d = (stpm3x_t *) dev;
 
-    res->val[0] = (uint16_t) stpm3x_read_voltage_rms_1(d);
+    res->val[0] = stpm3x_read_voltage_rms_1(d);
     res->unit = UNIT_V;
     res->scale = -3;
     return 1;
@@ -45,7 +45,7 @@ static int read_current_rms_2(const void *dev, phydat_t *res)
 {
     const stpm3x_t *d = (stpm3x_t *) dev;
 
-    res->val[0] = (uint16_t) stpm3x_read_current_rms_2(d);
+    res->val[0] = stpm3x_read_current_rms_2(d);
     res->unit = UNIT_A;
     res->scale = -3;
     return 1;
@@ -55,7 +55,7 @@ static int read_voltage_rms_2(const void *dev, phydat_t *res)
 {
     const stpm3x_t *d = (stpm3x_t *) dev;
 
-    res->val[0] = (uint16_t) stpm3x_read_voltage_rms_2(d);
+    res->val[0] = stpm3x_read_voltage_rms_2(d);
     res->unit = UNIT_V;
     res->scale = -3;
     return 1;

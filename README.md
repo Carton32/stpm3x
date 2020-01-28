@@ -1,6 +1,6 @@
 # STPM3x
 RIOT OS driver for STPM3x
-Tested on RIOT 2018.10 with STPM33 only with current values reading on channel 1.
+Tested on RIOT 2020.01 with STPM33 only with current values reading on channels 1 & 2.
 
 ## Installation
 If you want to use this driver, add in file :
@@ -24,4 +24,4 @@ ifneq (,$(filter stpm3x,$(USEMODULE)))
 endif
 ```
 
-and move the `auto_init_stpm3x.c` file to `/sys/auto_init/saul/` + the `stpm3x.h` file to `/drivers/include` + the folder `stpm3x` to `/drivers/`
+and move the `auto_init_stpm3x.c` file to `RIOT/sys/auto_init/saul/` + the `stpm3x.h` file to `RIOT/drivers/include` + the subfolder `stpm3x` to `RIOT/drivers/`
