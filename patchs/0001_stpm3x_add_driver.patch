@@ -1,0 +1,47 @@
+diff --git a/drivers/Makefile.dep b/drivers/Makefile.dep
+index ee0156283..71e1d9623 100644
+--- a/drivers/Makefile.dep
++++ b/drivers/Makefile.dep
+@@ -676,6 +676,12 @@ ifneq (,$(filter stmpe811,$(USEMODULE)))
+   USEMODULE += xtimer
+ endif
+ 
++ifneq (,$(filter stpm3x,$(USEMODULE)))
++  FEATURES_REQUIRED += periph_gpio_irq
++  FEATURES_REQUIRED += periph_spi
++  USEMODULE += xtimer
++endif
++
+ ifneq (,$(filter slipdev,$(USEMODULE)))
+   USEMODULE += tsrb
+   FEATURES_REQUIRED += periph_uart
+diff --git a/drivers/Makefile.include b/drivers/Makefile.include
+index e9d78958a..c130f714a 100644
+--- a/drivers/Makefile.include
++++ b/drivers/Makefile.include
+@@ -356,6 +356,10 @@ ifneq (,$(filter stmpe811,$(USEMODULE)))
+   USEMODULE_INCLUDES += $(RIOTBASE)/drivers/stmpe811/include
+ endif
+ 
++ifneq (,$(filter stpm3x,$(USEMODULE)))
++  USEMODULE_INCLUDES += $(RIOTBASE)/drivers/stpm3x/include
++endif
++
+ ifneq (,$(filter sx127x,$(USEMODULE)))
+   USEMODULE_INCLUDES += $(RIOTBASE)/drivers/sx127x/include
+ endif
+diff --git a/drivers/saul/init_devs/init.c b/drivers/saul/init_devs/init.c
+index f328e34fc..eb657bbf1 100644
+--- a/drivers/saul/init_devs/init.c
++++ b/drivers/saul/init_devs/init.c
+@@ -239,6 +239,10 @@ void saul_init_devs(void)
+         extern void auto_init_sps30(void);
+         auto_init_sps30();
+     }
++    if (IS_USED(MODULE_STPM3X)) {
++        extern void auto_init_stpm3x(void);
++        auto_init_stpm3x();
++    }
+     if (IS_USED(MODULE_TCS37727)) {
+         extern void auto_init_tcs37727(void);
+         auto_init_tcs37727();
