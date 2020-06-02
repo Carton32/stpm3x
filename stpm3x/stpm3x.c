@@ -150,8 +150,6 @@ uint8_t stpm3x_init(stpm3x_t *dev, const stpm3x_params_t *params)
     }
 #endif
 
-    xtimer_usleep(STPM3X_T_READY_WAIT);
-
     DEBUG("%s : Initialization of STPM3X driver done!\n", DEBUG_FUNC);
 
     return STPM3X_OK;
