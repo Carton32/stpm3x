@@ -457,7 +457,6 @@ extern "C" {
 #define STPM3X_T_SCS_MIN            (4U)
 #define STPM3X_T_SCS_CUST           (50U)
 #define STPM3X_T_SCS_TYP            (1000U)
-#define STPM3X_T_READY_WAIT         (1000000U)
 
 /**
   * @brief   Constants for CRC generation
