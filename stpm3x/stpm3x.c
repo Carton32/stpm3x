@@ -271,9 +271,8 @@ uint16_t stpm3x_read_current_rms_1(const stpm3x_t *dev)
     uint32_t value = 0;
     stpm3x_read_reg(dev, STPM3X_REG_DSP_REG14, &value);
 
-    // Here we lose 2 MSB (C1_RMS_DATA = 17 bits).
-    // Because SAUL works with int16_t. So through this interface, you can measure up to 32767 [mA].
-    return (((value & STPM3X_MASK_C1_RMS_DATA) >> 15) & 0x7FFF) * dev->params.currentRMSLSBValue;
+    // SAUL works with int16_t. So through this interface, you can measure up to 32767 [mA].
+    return ((uint16_t)(((value & STPM3X_MASK_C1_RMS_DATA) >> 15) * dev->params.currentRMSLSBValue)) & 0x7FFF;
 }
 
 uint16_t stpm3x_read_voltage_rms_1(const stpm3x_t *dev)
@@ -293,9 +292,8 @@ uint16_t stpm3x_read_current_rms_2(const stpm3x_t *dev)
     uint32_t value = 0;
     stpm3x_read_reg(dev, STPM3X_REG_DSP_REG15, &value);
 
-    // Here we lose 2 MSB (C1_RMS_DATA = 17 bits).
-    // Because SAUL works with int16_t. So through this interface, you can measure up to 32767 [mA].
-    return (((value & STPM3X_MASK_C2_RMS_DATA) >> 15) & 0x7FFF) * dev->params.currentRMSLSBValue;
+    // SAUL works with int16_t. So through this interface, you can measure up to 32767 [mA].
+    return ((uint16_t)(((value & STPM3X_MASK_C2_RMS_DATA) >> 15) * dev->params.currentRMSLSBValue)) & 0x7FFF;
 }
 
 uint16_t stpm3x_read_voltage_rms_2(const stpm3x_t *dev)
